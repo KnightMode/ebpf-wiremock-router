@@ -1,0 +1,11 @@
+mappings:
+  - request:
+      method: POST
+      urlPathPattern: /api/notifications/send
+    response:
+      status: 200
+      headers:
+        Content-Type: application/json
+      jsonBody:
+        sent: true
+        channel: "email"

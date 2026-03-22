@@ -1,0 +1,27 @@
+# Usage: docker compose up --build
+
+services:
+  # WireMock CLI — reads wiremock.yaml + .wiremock/ stubs
+  wiremock:
+    image: wiremock/wiremock-cli:latest
+    volumes:
+      - ~/.config/wiremock-cli:/etc/wiremock-cli
+      - .:/work
+    # No host port mapping needed — test-runner shares network via network_mode
+
+  # eBPF router + Java tests — shares network with WireMock
+  # so 127.0.0.1:8080/8081/8082 reaches WireMock
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "service:wiremock"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - /sys/kernel/btf:/sys/kernel/btf:ro
+    depends_on:
+      - wiremock
+    environment:
+      - WIREMOCK_YAML=/app/wiremock.yaml
+      - VERBOSE=true

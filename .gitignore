@@ -1,0 +1,23 @@
+# Go binaries
+ebpf-wiremock-router
+*.o
+
+# Generated eBPF Go bindings
+redirect_bpfel.go
+redirect_bpfel.o
+redirect_bpfeb.go
+redirect_bpfeb.o
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Java build output
+java/target/
+
+# vmlinux header (generated per-machine)
+bpf/vmlinux.h

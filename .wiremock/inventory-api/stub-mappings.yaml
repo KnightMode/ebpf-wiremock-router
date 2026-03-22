@@ -1,0 +1,21 @@
+mappings:
+  - request:
+      method: GET
+      urlPathPattern: /api/inventory/check
+    response:
+      status: 200
+      headers:
+        Content-Type: application/json
+      jsonBody:
+        available: true
+        quantity: 42
+
+  - request:
+      method: POST
+      urlPathPattern: /api/inventory/release
+    response:
+      status: 200
+      headers:
+        Content-Type: application/json
+      jsonBody:
+        released: true

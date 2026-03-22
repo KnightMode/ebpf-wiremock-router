@@ -1,0 +1,24 @@
+services:
+  order-api:
+    type: REST
+    name: "Order API (service-a)"
+    port: 8080
+    path: ./.wiremock/order-api
+    originals:
+      default: https://service-a.example.com
+
+  inventory-api:
+    type: REST
+    name: "Inventory API (service-b)"
+    port: 8081
+    path: ./.wiremock/inventory-api
+    originals:
+      default: https://service-b.example.com
+
+  notification-api:
+    type: REST
+    name: "Notification API (service-c)"
+    port: 8082
+    path: ./.wiremock/notification-api
+    originals:
+      default: https://service-c.example.com

@@ -1,0 +1,33 @@
+mappings:
+  - request:
+      method: POST
+      urlPathPattern: /api/orders
+    response:
+      status: 201
+      headers:
+        Content-Type: application/json
+      jsonBody:
+        orderId: "ORD-123456"
+        status: "CREAED"
+
+  - request:
+      method: GET
+      urlPathPattern: /api/orders/.*/status
+    response:
+      status: 200
+      headers:
+        Content-Type: application/json
+      jsonBody:
+        orderId: "ORD-123456"
+        status: "CONFIRED"
+
+  - request:
+      method: POST
+      urlPathPattern: /api/orders/.*/cancel
+    response:
+      status: 200
+      headers:
+        Content-Type: application/json
+      jsonBody:
+        orderId: "ORD-123456"
+        status: "CANCELLD"
